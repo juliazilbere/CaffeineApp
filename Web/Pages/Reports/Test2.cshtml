@@ -1,0 +1,74 @@
+﻿@page
+@model Web.Pages.Reports.Test2Model
+
+@using System.Data;
+
+@{
+    ViewData["Title"] = "Caffeine Intake Report";
+}
+
+
+<h1>Caffeine Intake Report</h1>
+
+
+
+
+<div style="width: 100%; height: 100%">
+    <canvas id="myChart" height="300px"></canvas>
+</div>
+
+<br />
+<br />
+<table border="1">
+    <thead>
+        <tr align="center">
+            <!--
+            <th>UserId</th>
+            <th>UserName</th>
+
+                <td>intake.UserId</td>
+                <td>intake.UserName</td>
+
+            -->
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Caffeine</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var intake in Model.Intakes)
+        {
+            <tr align="center">
+                <td>@intake.Dt</td>
+                <td>@intake.Hrs</td>
+                <td>@intake.CaffeineIntakeNum.ToString("0.00")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+  var ctx = document.getElementById("myChart").getContext('2d');
+
+
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: @Json.Serialize(Model.Intakes.Select(x => $"{x.Dt} {x.Hrs}:00").ToList()),// ["Tokyo", "Mumbai", "Mexico City", "Shanghai", "Sao Paulo", "New York", "Karachi", "Buenos Aires", "Delhi", "Moscow"],
+      datasets: [{
+        label: 'Caffeine', // Name the series
+        data: @Json.Serialize(Model.Intakes.Select(x => x.CaffeineIntakeNum).ToList()), //[500, 50, 2424, 14040, 14141, 4111, 4544, 47, 5555, 6811], // Specify the data values array
+        fill: false,
+        borderColor: '#2196f3', // Add custom color border (Line)
+        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+        borderWidth: 1 // Specify bar border width
+      }]
+    },
+    options: {
+      responsive: true, // Instruct chart js to respond nicely.
+      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+    }
+  });
+</script>
