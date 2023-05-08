@@ -14,17 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Drink[0].Name)
+                Drink
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Drink[0].CafeinePer100ml)
+                Caffeine, mg/100 ml
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Drink[0].DefaultSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Drink[0].Ownership)
-            </th>
+                Default size, ml
+            </th> 
+            
+            
             <th></th>
         </tr>
     </thead>
@@ -40,9 +39,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DefaultSize)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ownership)
-            </td>
+            
             <td>
                     @if (item.Ownership == DrinkOwnership.Own)
                     {

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(connectionString));
-//var connectionString = $"Server=JULIA-PC\\SQLEXPRESS;Database=Caffeine1;Trusted_Connection=True;MultipleActiveResultSets=true";
+//var connectionString = $"Server=caffeine-tracker.database.windows.net;Database=Caffeine1;Trusted_Connection=True;MultipleActiveResultSets=true";
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

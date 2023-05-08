@@ -16,11 +16,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.DrinkLog[0].Drink)
             </th>
+            <!--
             <th style="color: darkgray">
                 @Html.DisplayNameFor(model => model.DrinkLog[0].User)
             </th>
+            -->
             <th>
-                Actual Size
+                Size, ml
                 <!--
                 @Html.DisplayNameFor(model => model.DrinkLog[0].ActualSize)
                 -->
@@ -40,9 +42,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Drink.Name)
             </td>
+            <!--
             <td style="color: darkgray">
                 @Html.DisplayFor(modelItem => item.User.UserName)
             </td>
+                -->
             <td>
                 @Html.DisplayFor(modelItem => item.ActualSize)
             </td>

@@ -30,6 +30,7 @@ namespace Web.Pages.DrinkLogs
             {
                 DrinkLog = await _context.DrinkLog
                     .Where(x => x.UserId == userId)
+                    .OrderByDescending(d => d.DrinkTime)
                     .Include(d => d.Drink)
                     .Include(d => d.User).ToListAsync();
             }

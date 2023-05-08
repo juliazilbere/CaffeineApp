@@ -1,4 +1,5 @@
 using Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,8 @@ using Web.Data;
 
 namespace Web.Pages.Reports
 {
-  public class Test2Model : PageModel
+    [Authorize]
+    public class Test2Model : PageModel
   {
     private readonly ApplicationDbContext _context;
 
